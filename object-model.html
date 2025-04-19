@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Model</title>
+  <script src="object-model.js"></script>
+</head>
+<body>
+  <div class="container" id="counter1" js:object-model="counter">
+    <h2>Current Count: <span js:content="count">0</span></h2>
+
+    <button js:on-click="decrease">Decrease</button>
+    <button js:on-click="increase">Increase</button>
+  </div>
+
+  
+</body>
+<script>
+  component.createModel("counter", {
+    count: 0,
+
+    decrease() {
+      this.count--;
+    },
+    
+    increase() {
+      this.count++;
+    }
+  });
+</script>
+</html>
