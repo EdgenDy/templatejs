@@ -13,8 +13,20 @@
     <button js:on-click="decrease">Decrease</button>
     <button js:on-click="increase">Increase</button>
   </div>
-
   
+  <br><br><br>
+
+  <div class="container" js:switch="path" js:object-model="color-viewer">
+    <h2 js:case="/red" hidden>Red</h2>
+    <h2 js:case="/green" hidden>Green</h2>
+    <h2 js:case="/blue" hidden>Blue</h2>
+    <h2 js:case="/orange" hidden>Orange</h2>
+    
+    <button js:on-click="changeView" data-path="/red">Go to Red</button>
+    <button js:on-click="changeView" data-path="/green">Go to Green</button>
+    <button js:on-click="changeView" data-path="/blue">Go to Blue</button>
+    <button js:on-click="changeView" data-path="/orange">Go to Orange</button>
+  </div>
 </body>
 <script>
   component.createModel("counter", {
@@ -26,6 +38,14 @@
     
     increase() {
       this.count++;
+    }
+  });
+
+  component.createModel("color-viewer", {
+    path: "/red",
+
+    changeView(event) {
+      this.path = event.target.dataset.path;
     }
   });
 </script>
